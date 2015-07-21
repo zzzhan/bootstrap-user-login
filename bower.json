@@ -1,0 +1,33 @@
+{
+  "name": "bootstrap-user-login",
+  "version": "0.1.0",
+  "authors": [
+    "zzzhan <chunzhan.he@gmail.com>"
+  ],
+  "description": "A user login module",
+  "main": [
+    "dist/js/jbootstrap-ssdlg.min.js",
+    "dist/css/bootstrap-ssdlg.min.css"
+  ],
+  "keywords": [
+    "signup",
+    "login",
+    "Bootstrap"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/zzzhan/bootstrap-user-login",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "index.html",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+	"jquery": "^1.10",
+	"bootstrap": ">=2"
+  }
+}
