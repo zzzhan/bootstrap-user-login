@@ -1,5 +1,4 @@
-# Bootstrap Shape Style Dialog
-
-A shape style options dialog for Twitter Bootstrap
+# Bootstrap User Login
+A user login module for sign in and sign up.
 
 
