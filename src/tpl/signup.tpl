@@ -1,19 +1,9 @@
-<form>
-  <div class="form-group">
-    <label for="signupName">${userName}</label>
+<form onsubmit="javascript:return false;">
+    <label for="signupName" class="sr-only">${userName}</label>
     <input type="text" class="form-control" id="signupName" placeholder="${userName}">
-  </div>
-  <div class="form-group">
-    <label for="signupEmail">${email}</label>
+    <label for="signupEmail" class="sr-only">${email}</label>
     <input type="email" class="form-control" id="signupEmail" placeholder="${email}">
-  </div>
-  <div class="form-group">
-    <label for="signupPassword">${password}</label>
+    <label for="signupPassword" class="sr-only">${password}</label>
     <input type="password" class="form-control" id="signupPassword" placeholder="${password}">
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-default">${signup}</button>
-    </div>
-  </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">${signup}</button>
 </form>
