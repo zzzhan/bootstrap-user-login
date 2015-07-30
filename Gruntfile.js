@@ -52,12 +52,18 @@ module.exports = function (grunt) {
           collapseWhitespace: true
         },
         files: {
-          'dist/signup.min.html': 'tmp/signup.html',
-          'dist/signup_zh_cn.min.html': 'tmp/signup_zh_cn.html',
-          'dist/signup_zh_tw.min.html': 'tmp/signup_zh_tw.html',
-          'dist/login.min.html': 'tmp/login.html',
-          'dist/login_zh_cn.min.html': 'tmp/login_zh_cn.html',
-          'dist/login_zh_tw.min.html': 'tmp/login_zh_tw.html'
+          'dist/signup.html': 'tmp/signup.html',
+          'dist/signup_zh_cn.html': 'tmp/signup_zh_cn.html',
+          'dist/signup_zh_tw.html': 'tmp/signup_zh_tw.html',
+          'dist/signin.html': 'tmp/signin.html',
+          'dist/signin_zh_cn.html': 'tmp/signin_zh_cn.html',
+          'dist/signin_zh_tw.html': 'tmp/signin_zh_tw.html',
+          'dist/forgot.html': 'tmp/forgot.html',
+          'dist/forgot_zh_cn.html': 'tmp/forgot_zh_cn.html',
+          'dist/forgot_zh_tw.html': 'tmp/forgot_zh_tw.html',
+          'dist/verify.html': 'tmp/verify.html',
+          'dist/verify_zh_cn.html': 'tmp/verify_zh_cn.html',
+          'dist/verify_zh_tw.html': 'tmp/verify_zh_tw.html'
         }
       }
     },
@@ -65,7 +71,9 @@ module.exports = function (grunt) {
     dotpl: {
 	  options: {
         signup:'src/tpl/signup.tpl',
-        login:'src/tpl/login.tpl'		  
+        signin:'src/tpl/signin.tpl'		,
+        forgot:'src/tpl/forgot.tpl',
+        verify:'src/tpl/verify.tpl'  
 	  },
       signup: {
         files: {
@@ -74,15 +82,29 @@ module.exports = function (grunt) {
           'tmp/signup_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
       },
-      login: {
+      signin: {
         files: {
-          'tmp/login.html': ['src/lang/en-us.json'],
-          'tmp/login_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/login_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/signin.html': ['src/lang/en-us.json'],
+          'tmp/signin_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/signin_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      forgot: {
+        files: {
+          'tmp/forgot.html': ['src/lang/en-us.json'],
+          'tmp/forgot_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/forgot_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      verify: {
+        files: {
+          'tmp/verify.html': ['src/lang/en-us.json'],
+          'tmp/verify_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/verify_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
       }
     }
   });
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.registerTask('default', ['jshint','clean','dotpl','htmlmin','uglify']);
+  grunt.registerTask('default', ['jshint','clean','dotpl','concat','cssmin','htmlmin','uglify']);
 };

@@ -2,7 +2,7 @@
 <html lang="${lang}">
   <head>
     <meta charset="utf-8">
-    <title>${signup_title} · ${project}</title>
+    <title>${forgot_title} · ${project}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="${keywords}" />
     <meta name="description" content="${description}" />
@@ -32,15 +32,17 @@
     </nav>
     <div class="container">
 	  <form class="user-form">
-        <h4 class="user-form-heading">${signup_title}</h4>
-		<label for="userName" class="sr-only">${userName}</label>
-		<input type="text" class="form-control" id="userName" placeholder="${userName}">
+        <h4 class="user-form-heading">${forgot_title}</h4>
+		<div class="alert alert-info hidden">
+			<p>${forgot_info}</p>
+		</div>
 		<label for="userEmail" class="sr-only">${email}</label>
 		<input type="email" class="form-control" id="userEmail" placeholder="${email}">
-		<label for="userPassword" class="sr-only">${password}</label>
-		<input type="password" class="form-control" id="userPassword" placeholder="${password}">
-		<button class="btn btn-lg btn-primary btn-block">${signup}</button>
+		<button class="btn btn-lg btn-primary btn-block">${forgot_btn}</button>
 	  </form>
+		<div class="alert alert-success hidden">
+			<p>${forgot_success}</p>
+		</div>
     </div>
 
     <footer class="footer">

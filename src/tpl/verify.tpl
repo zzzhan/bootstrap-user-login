@@ -2,7 +2,7 @@
 <html lang="${lang}">
   <head>
     <meta charset="utf-8">
-    <title>${signup_title} · ${project}</title>
+    <title>${verify_title} · ${project}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="${keywords}" />
     <meta name="description" content="${description}" />
@@ -30,16 +30,20 @@
 		
       </div>
     </nav>
-    <div class="container">
+    <div class="container">      
 	  <form class="user-form">
-        <h4 class="user-form-heading">${signup_title}</h4>
-		<label for="userName" class="sr-only">${userName}</label>
-		<input type="text" class="form-control" id="userName" placeholder="${userName}">
-		<label for="userEmail" class="sr-only">${email}</label>
-		<input type="email" class="form-control" id="userEmail" placeholder="${email}">
-		<label for="userPassword" class="sr-only">${password}</label>
-		<input type="password" class="form-control" id="userPassword" placeholder="${password}">
-		<button class="btn btn-lg btn-primary btn-block">${signup}</button>
+        <h4 class="user-form-heading">${verify_title}</h4>
+		<div class="alert alert-success hidden">
+			<p>${verify_success}</p>
+			<a href="/signin" class="btn btn-success hidden">${signin}</a>
+		</div>
+		<div class="alert alert-danger hidden">
+			<p>${verify_failure}</p>
+			<a href="/signin" class="btn btn-success hidden">${signin}</a>
+		</div>
+		<div class="alert alert-info">
+			<p><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>${verifing}</p>
+		</div>
 	  </form>
     </div>
 
@@ -52,3 +56,4 @@
 	<script src="js/bootstrap-user-login.min.js" type="text/javascript"></script>
   </body>
 </html>
+
