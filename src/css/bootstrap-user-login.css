@@ -1,8 +1,44 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-	padding-top: 40px; padding-bottom: 40px;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
 }
 .user-form {
-	margin: 0px auto; padding: 15px; max-width: 330px;
+	margin: 0px auto; padding: 15px; max-width: 400px;
 }
 .user-form .user-form-heading {
 	margin-bottom: 10px;
@@ -24,4 +60,14 @@ body {
 }
 .user-form input[type='password'] {
 	margin-bottom: 10px; border-top-left-radius: 0px; border-top-right-radius: 0px;
+}
+.user-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9000;
+}
+.user-inner-message {
+    margin: 0 auto;
 }

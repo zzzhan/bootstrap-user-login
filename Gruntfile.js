@@ -10,7 +10,8 @@ module.exports = function (grunt) {
       },
       build: {
     		files: {
-    			'dist/js/<%= pkg.file %>.min.js':'src/js/<%=pkg.file %>.js'
+    			'dist/js/<%= pkg.file %>.min.js':'src/js/<%=pkg.file %>.js',
+    			'dist/js/jquery-ajax-control.min.js':'src/js/jquery-ajax-control.js',
     		}
       }
     },
@@ -70,10 +71,37 @@ module.exports = function (grunt) {
     clean: ['tmp', 'dist'],
     dotpl: {
 	  options: {
-        signup:'src/tpl/signup.tpl',
-        signin:'src/tpl/signin.tpl'		,
-        forgot:'src/tpl/forgot.tpl',
-        verify:'src/tpl/verify.tpl'  
+        signup:'tmp/signup.tpl',
+        signin:'tmp/signin.tpl',
+        forgot:'tmp/forgot.tpl',
+        verify:'tmp/verify.tpl' ,
+        framework:'src/tpl/framework.tpl' 
+	  },
+	  framework: {
+		options: {
+			opener:'<%',
+			closer:'%>',
+			mapping: {
+			  'tmp/signup.tpl': {title:'${signup_title}'},
+			  'tmp/signin.tpl': {title:'${signin_title}'},
+			  'tmp/forgot.tpl': {title:'${forgot_title}'},
+			  'tmp/verify.tpl': {title:'${verify_title}'}
+			},
+			renderer: function(k, v) {
+				if(k==='content') {
+					v = grunt.file.read(this.ctx.dest.replace('tmp', 'src/tpl'));
+				} else {
+					v = this.options().mapping[this.ctx.dest][k];
+				}
+				return v;
+			}
+		},
+        files: {
+          'tmp/signup.tpl': ['src/lang/en-us.json'],
+          'tmp/signin.tpl': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/forgot.tpl': ['src/lang/en-us.json', 'src/lang/zh-tw.json'],
+          'tmp/verify.tpl': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
 	  },
       signup: {
         files: {

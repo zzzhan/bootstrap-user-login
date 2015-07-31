@@ -17,11 +17,12 @@
 "rememberme":"Remember me",
 "verify_title":"User verify",
 "verifing":"Verifing...",
+"sending":"Sending...",
 "verify_success":"User verified success!",
 "verify_failure":"User verified failure!<br>You can sign in to resend a new verify code again.",
 "forgot":"Forgot password",
 "forgot_title":"Forgot password",
-"forgot_info":"We will send a link to your email, then  you can reset your password.",
+"forgot_info":"Please input your email to get a reset password link.",
 "forgot_btn":"Send",
 "forgot_success":"A email had sent to you, please check your email inbox."
 }
