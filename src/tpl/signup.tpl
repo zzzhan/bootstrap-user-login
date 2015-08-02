@@ -6,5 +6,5 @@
 		<input type="email" class="form-control" id="userEmail" placeholder="${email}">
 		<label for="userPassword" class="sr-only">${password}</label>
 		<input type="password" class="form-control" id="userPassword" placeholder="${password}">
-		<button class="btn btn-lg btn-primary btn-block">${signup}</button>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">${signup}</button>
 	  </form>

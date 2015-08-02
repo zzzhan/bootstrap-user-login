@@ -9,17 +9,30 @@
 	var fm = $('.user-form');
 	var UserLogin = function(fm) {
 		fm.on('submit', $.proxy(this.submit, this));
+		this.url = fm.attr('action');
+		if(this.url.indexOf('verify')!==1) {
+			fm.trigger('submit');
+		}
 	};
 	UserLogin.prototype = {
         constructor: UserLogin,
 		submit: function(e) {
 			var fm = $(e.target);
-			var url = fm.attr('action');
-			$.post(url, fm, $.proxy(this.success, this));
+			$.post(this.url, fm.serialize(), $.proxy(this.success, this));
 			return false;
 		},
-		success: function() {
-			$('.alert-success').removeClass('hidden');
+		success: function(data) {
+			if(this.url.indexOf('signin')!==-1) {
+				window.location.href = '/';
+			} else if(this.url.indexOf('forgot')!==-1) {
+				$('.alert-success').removeClass('hidden');
+			} else if(this.url.indexOf('verify')!==-1) {
+				if(data.code===1) {
+					
+				} else {
+				  //$('.alert').addClass('alert-danger').text(data.code);
+				}
+			}
 		}
 	};
 	var msgEl = $('<div class="user-message hidden"><div style="padding: 5px;">'+
@@ -28,11 +41,13 @@
 				'<p></p></div></div></div>');
 	$.ajaxControl = function(data) {
 		var ret = false;
-		if(data.code===0) {
+		if(data.code===1) {
 			ret = true;
 		} else {
+			msgEl.removeClass('hidden');
 			$('p', msgEl).text(data.code);
 		}
+		console.log(data);
 		return ret;
 	};
 	$('.close', msgEl).on('click', function() {
