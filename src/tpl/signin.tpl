@@ -4,11 +4,6 @@
 		<input type="email" class="form-control" id="userEmail" name="login" placeholder="${email}" required autofocus>
 		<label for="userPassword" class="sr-only">${password}</label>
 		<input type="password" class="form-control" id="userPassword" name="password" placeholder="${password}" required>
-		<div class="checkbox">
-			<label>
-			  <input type="checkbox" name="remember"> ${rememberme}
-			</label>
-		</div>
 		<button type="submit" class="btn btn-lg btn-primary btn-block">${signin}</button>
 		<p>
 		  <a href="forgot">${forgot}</a> |

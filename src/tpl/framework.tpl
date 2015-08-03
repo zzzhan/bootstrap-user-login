@@ -7,6 +7,7 @@
     <meta name="keywords" content="${keywords}" />
     <meta name="description" content="${description}" />
 	<link href="${cdn_bootstrap_css}" rel="stylesheet">
+    <link href="${cdn_fontawesome}" rel="stylesheet">
 	<link href="css/bootstrap-user-login.min.css" rel="stylesheet">
   </head>
   <body>
@@ -23,10 +24,20 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <div class="nav navbar-form navbar-right">
-			  <div class="nav navbar-nav">
-				<a href="./signup" class="btn btn-success">${signup}</a>
-				<a href="./signin" class="btn btn-default">${signin}</a>
-			  </div>
+			<div class="btn-group user-signin-panel hidden">
+				<a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" title="View profile and setting">
+				  <i class="fa fa-user"></i><span class="user-name"></span>
+				  <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">					
+				 <li><a href="/user/profile">${profile}</a></li>					
+				 <li><a href="#" class="user-signout-btn">${signout}</a></li>
+				</ul>
+			</div>
+			<div class="nav navbar-nav user-signout-panel">
+			  <a href="#" class="btn btn-success" data-toggle="modal" data-target="#signupModal">${signup}</a>
+			  <a href="#" class="btn btn-default" data-toggle="modal" data-target="#signinModal">${signin}</a>
+			</div>
 		  </div>
         </div>
 		
@@ -45,5 +56,6 @@
 	<script src="${cdn_bootstrap_js}" type="text/javascript"></script>
 	<script src="js/bootstrap-user-login.min.js" type="text/javascript"></script>
 	<script src="js/jquery-ajax-control.min.js" type="text/javascript"></script>
+	<script src="js/user-message.min.js" type="text/javascript"></script>
   </body>
 </html>

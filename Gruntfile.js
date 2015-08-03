@@ -12,6 +12,7 @@ module.exports = function (grunt) {
     		files: {
     			'dist/js/<%= pkg.file %>.min.js':'src/js/<%=pkg.file %>.js',
     			'dist/js/jquery-ajax-control.min.js':'src/js/jquery-ajax-control.js',
+    			'dist/js/user-message.min.js':'src/js/user-message.js'
     		}
       }
     },
