@@ -1,20 +1,3 @@
-/*
-##nginx support
-		location ~* ^/user/(\w+)$ {
-		  rewrite (.*) $1.html last;
-		}
-		location ~* ^/user/(\w+)_(\w+\-\w+\-\w+)$ {
-		  set $verifyid $2;
-		  rewrite ^(/user/\w+)_(\w+\-\w+\-\w+)$ $1 last;
-		}
-        location /user {
-			if ($verifyid) {
-			  add_header Set-Cookie "verifyid=$verifyid;path=/api";
-			}
-            alias   D:\8512\github\bootstrap-user-login\dist;
-        }
-*/
-
 (function(factory){
     "use strict";
     if (typeof define === 'function' && define.amd) {
@@ -23,14 +6,14 @@
         factory(window.jQuery);
     }	
 }(function($){			
-	var fm = $('.user-form');
+	//var fm = $('.user-form');
 	var UserLogin = function(fm, opt) {
 		this.opt = opt;
 		this.signinPanel = $('.user-signin-panel');
 		this.signoutPanel = $('.user-signout-panel');
 		fm.on('submit', $.proxy(this.submit, this));
 		this.url = fm.attr('action');
-		if(this.url.indexOf('verify')!==1) {
+		if(this.url.indexOf('verify')!==-1) {
 			fm.trigger('submit');
 		}
 		$.get('/api/auth', $.proxy(this.signin, this));
@@ -38,6 +21,7 @@
 	UserLogin.prototype = {
         constructor: UserLogin,
 		signin: function(res) {
+			console.log(res);
 			this.user = res.data;
 			$('.user-name', this.signinPanel).text(this.user.name);
 			this.signinPanel.removeClass('hidden');
@@ -50,7 +34,7 @@
 				url:this.url,
 				data:fm.serialize(),
 				success: $.proxy(this.success, this),
-				skipAjaxControl:false
+				skipAjaxControl:!!fm.data().skipAjaxControl
 			}, this.opt));
 			//$.post(this.url, fm.serialize(), $.proxy(this.success, this));
 			return false;
@@ -69,6 +53,22 @@
 			}
 		}
 	};
+    $.fn.userlogin = function(option) {
+        var pickerArgs = arguments;
+
+        return this.each(function() {
+            var $this = $(this),
+            inst = $this.data('userlogin'),
+            options = ((typeof option === 'object') ? option : {});
+            if ((!inst) && (typeof option !== 'string')) {
+                $this.data('userlogin', new UserLogin($this, options));
+            } else {
+                if (typeof option === 'string') {
+                    inst[option].apply(inst, Array.prototype.slice.call(pickerArgs, 1));
+                }
+            }
+        });
+    };
 	var msgEl = $('<div class="user-message hidden"><div style="padding: 5px;">'+
 		'<div class="alert alert-danger .alert-dismissible user-inner-message">'+
 	            '<button type="button" class="close" aria-label="Close">&times;</button>'+
@@ -93,17 +93,12 @@
 	});
 	$('body').append(msgEl);
 	$(document).ajaxError(function(event, request, ajaxOptions, thrownError){
-		console.log(event);
-		console.log(request);
-		console.log(ajaxOptions);
-		console.log(thrownError);
 		$('p', msgEl).text(thrownError);
 		msgEl.removeClass('hidden');
 	}).ajaxSend(function() {
 		msgEl.addClass('hidden');
-		$('button[type=submit]', fm).button('loading');
+		$('button[type=submit]').button('loading');
 	}).ajaxComplete(function() {
-		$('button', fm).button('reset');
+		$('button[type=submit]').button('reset');
 	});
-	$.userlogin = new UserLogin(fm);
 }));

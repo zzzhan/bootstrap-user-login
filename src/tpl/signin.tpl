@@ -10,3 +10,10 @@
 		  <a href="signup">${signup_title}</a>
 		</p>
 	  </form>
+	  	  <script language="javascript">
+	  <!--	  
+	  window.onload = function() {
+		$('.user-form').userlogin();
+		};
+	  -->
+	  </script>

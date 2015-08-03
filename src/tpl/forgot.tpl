@@ -11,3 +11,10 @@
 		<div class="alert alert-success hidden">
 			<p>${forgot_success}</p>
 		</div>
+	  	  <script language="javascript">
+	  <!--	  
+	  window.onload = function() {
+		$('.user-form').userlogin();
+		};
+	  -->
+	  </script>

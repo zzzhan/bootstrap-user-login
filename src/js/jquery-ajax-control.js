@@ -7,12 +7,9 @@
     }
 }(function($){
 	 var Success = function(origCallback){
-		var skipAjaxControl = this.skipAjaxControl||false;
-		if(!!skipAjaxControl) {
-		  return origCallback;
-		}
         return function(data, textStatus, jqXHR) {
-			if(typeof origCallback === "function"&&$.ajaxControl(data, textStatus, jqXHR)) {
+			var skipAjaxControl = this.skipAjaxControl||false;
+			if(!!skipAjaxControl||(typeof origCallback === "function"&&$.ajaxControl(data, textStatus, jqXHR))) {
 				origCallback(data, textStatus, jqXHR);
 			}
         };
