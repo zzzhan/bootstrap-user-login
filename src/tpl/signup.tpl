@@ -1,17 +1,40 @@
 	  <form class="user-form" action="/api/auth/signup">
         <h4 class="user-form-heading">${signup_title}</h4>
-		<label for="userName" class="sr-only">${userName}</label>
-		<input type="text" class="form-control" id="userName" placeholder="${userName}" required autofocus pattern="^[0-9a-zA-Z]+\-?[0-9a-zA-Z]+$" oninvalid="this.setCustomValidity('Login may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen')" onchange="this.setCustomValidity('')">
-		<label for="userEmail" class="sr-only">${email}</label>
-		<input type="email" class="form-control" id="userEmail" placeholder="${email}" required>
-		<label for="userPassword" class="sr-only">${password}</label>
-		<input type="password" class="form-control" id="userPassword" placeholder="${password}" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('Password needs 7 characters and at least one number')" onchange="this.setCustomValidity('')">
-		<button type="submit" class="btn btn-lg btn-primary btn-block">${signup}</button>
+		<div class="form-group">
+		  <label for="userName" class="sr-only">${userName}</label>
+		  <input type="text" class="form-control" id="userName" name="name" placeholder="${userName}" required autofocus pattern="^[0-9a-zA-Z]+\-?[0-9a-zA-Z]+$" oninvalid="this.setCustomValidity('${name_pattern_err}')" onchange="this.setCustomValidity('')">
+		</div>
+		<div class="form-group">
+		  <label for="userEmail" class="sr-only">${email}</label>
+		  <input type="email" class="form-control" id="userEmail" name="email" placeholder="${email}" required>
+		</div>
+		<div class="form-group">
+		  <label for="userPassword" class="sr-only">${password}</label>
+		  <div class="input-group">
+		    <input type="password" class="form-control" id="userPassword" name="password" placeholder="${password}" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('${pass_pattern_err}')" onchange="this.setCustomValidity('')">
+		    <span class="input-group-addon" title="${display_pass}">
+              <input type="checkbox" aria-label="${display_pass}">
+            </span>
+		  </div>
+		</div>
+		<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${signup}</button>
 	  </form>
-	  	  <script language="javascript">
+	  <script language="javascript">
 	  <!--	  
 	  window.onload = function() {
-		$('.user-form').userlogin();
+	    var onsignin = function() {
+		  window.location.href = '/editor/';
 		};
+		var fm = $('.user-form');
+		fm.on('signin', onsignin).userlogin({success: onsignin});
+		$('input[type=checkbox]', fm).click(function() {
+		  var val = $(this).is(':checked');
+		  if(val) {
+		    $('#userPassword').attr('type', 'text');
+		  } else {		  
+		    $('#userPassword').attr('type', 'password');
+		  }
+		});
+	  };
 	  -->
-	  </script>
+	 </script>

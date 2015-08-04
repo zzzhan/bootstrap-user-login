@@ -8,14 +8,17 @@
 	  <!--	  
 	  window.onload = function() {
 		$('.user-form').userlogin({success:function(res){
-		  console.log(res);
+		  var msg = null;
+		  var al = $('.user-form .alert');
 		  if(res.code===1) {
+			al.addClass('alert-success');
+			msg = $.userMsg.verify_success;
 		  } else {
-			var al = $('.user-form .alert');
 			al.addClass('alert-danger');
-			al.removeClass('alert-info');
-			$('p', al).text($.userMsg[res.code]);
+			msg = $.userMsg[res.code];
 		  }
+		  al.removeClass('alert-info');
+		  $('p', al).text(msg);
 		}});
 		};
 	  -->

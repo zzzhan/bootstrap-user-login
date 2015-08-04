@@ -16,6 +16,9 @@
 "signin_title":"Sign in",
 "signin":"Sign in",
 "signout":"Sign out",
+"reset_pass":"Reset password",
+"newpass":"New password",
+"newpass_info":"Please input your new password.",
 "profile":"Profile",
 "rememberme":"Remember me",
 "verify_title":"User verify",
@@ -25,7 +28,10 @@
 "verify_failure":"User verified failure!<br>You can sign in to resend a new verify code again.",
 "forgot":"Forgot your password?",
 "forgot_title":"Forgot password",
-"forgot_info":"Please input your email to get a reset password link.",
+"forgot_info":"Please input your email to reset your password.",
 "forgot_btn":"Send",
-"forgot_success":"A email had sent to you, please check your email inbox."
+"name_pattern_err":"Login may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen",
+"pass_pattern_err":"Password needs 7 characters and at least one number",
+"display_pass":"Display password",
+"loading":"Loading"
 }

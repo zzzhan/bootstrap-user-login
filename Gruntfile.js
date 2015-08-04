@@ -65,7 +65,10 @@ module.exports = function (grunt) {
           'dist/forgot_zh_tw.html': 'tmp/forgot_zh_tw.html',
           'dist/verify.html': 'tmp/verify.html',
           'dist/verify_zh_cn.html': 'tmp/verify_zh_cn.html',
-          'dist/verify_zh_tw.html': 'tmp/verify_zh_tw.html'
+          'dist/verify_zh_tw.html': 'tmp/verify_zh_tw.html',
+          'dist/reset.html': 'tmp/reset.html',
+          'dist/reset_zh_cn.html': 'tmp/reset_zh_cn.html',
+          'dist/reset_zh_tw.html': 'tmp/reset_zh_tw.html'
         }
       }
     },
@@ -75,7 +78,8 @@ module.exports = function (grunt) {
         signup:'tmp/signup.tpl',
         signin:'tmp/signin.tpl',
         forgot:'tmp/forgot.tpl',
-        verify:'tmp/verify.tpl' ,
+        verify:'tmp/verify.tpl',
+        reset:'tmp/reset.tpl',
         framework:'src/tpl/framework.tpl' 
 	  },
 	  framework: {
@@ -86,7 +90,8 @@ module.exports = function (grunt) {
 			  'tmp/signup.tpl': {title:'${signup_title}'},
 			  'tmp/signin.tpl': {title:'${signin_title}'},
 			  'tmp/forgot.tpl': {title:'${forgot_title}'},
-			  'tmp/verify.tpl': {title:'${verify_title}'}
+			  'tmp/verify.tpl': {title:'${verify_title}'},
+			  'tmp/reset.tpl': {title:'${reset_pass}'}
 			},
 			renderer: function(k, v) {
 				if(k==='content') {
@@ -98,10 +103,11 @@ module.exports = function (grunt) {
 			}
 		},
         files: {
-          'tmp/signup.tpl': ['src/lang/en-us.json'],
-          'tmp/signin.tpl': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/forgot.tpl': ['src/lang/en-us.json', 'src/lang/zh-tw.json'],
-          'tmp/verify.tpl': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/signup.tpl': [],
+          'tmp/signin.tpl': [],
+          'tmp/forgot.tpl': [],
+          'tmp/verify.tpl': [],
+          'tmp/reset.tpl': []
         }
 	  },
       signup: {
@@ -130,6 +136,13 @@ module.exports = function (grunt) {
           'tmp/verify.html': ['src/lang/en-us.json'],
           'tmp/verify_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
           'tmp/verify_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      reset: {
+        files: {
+          'tmp/reset.html': ['src/lang/en-us.json'],
+          'tmp/reset_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/reset_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
       }
     }

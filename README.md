@@ -1,4 +1,4 @@
 # Bootstrap User Login
-A user login module for sign in and sign up.
+> A group static pages and template for front-end user login module.
 
 

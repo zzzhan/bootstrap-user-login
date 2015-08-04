@@ -8,15 +8,17 @@
 }(function($){			
 	//var fm = $('.user-form');
 	var UserLogin = function(fm, opt) {
-		this.opt = opt;
-		this.signinPanel = $('.user-signin-panel');
-		this.signoutPanel = $('.user-signout-panel');
-		fm.on('submit', $.proxy(this.submit, this));
-		this.url = fm.attr('action');
-		if(this.url.indexOf('verify')!==-1) {
-			fm.trigger('submit');
-		}
-		$.get('/api/auth', $.proxy(this.signin, this));
+	  this.form = fm;
+	  this.opt = opt;
+	  this.signinPanel = $('.user-signin-panel');
+	  this.signoutPanel = $('.user-signout-panel');
+	  fm.on('submit', $.proxy(this.submit, this));
+	  this.url = fm.attr('action');
+	  if(this.url.indexOf('verify')!==-1) {
+		fm.trigger('submit');
+	  }
+	  $('.user-signout-btn').on('click', $.proxy(this.doSignout, this));
+	  $.get('/api/auth', $.proxy(this.signin, this));
 	};
 	UserLogin.prototype = {
         constructor: UserLogin,
@@ -26,6 +28,7 @@
 			$('.user-name', this.signinPanel).text(this.user.name);
 			this.signinPanel.removeClass('hidden');
 			this.signoutPanel.addClass('hidden');
+			this.form.trigger('signin', [res]);
 		},
 		submit: function(e) {
 			var fm = $(e.target);
@@ -38,6 +41,14 @@
 			}, this.opt));
 			//$.post(this.url, fm.serialize(), $.proxy(this.success, this));
 			return false;
+		},
+		doSignout: function() {
+			$.get('/api/auth/signout', $.proxy(this.signout, this));
+		},
+		signout: function() {
+			this.signinPanel.addClass('hidden');
+			this.signoutPanel.removeClass('hidden');
+			delete this.user;
 		},
 		success: function(data) {
 			if(this.url.indexOf('signin')!==-1) {
