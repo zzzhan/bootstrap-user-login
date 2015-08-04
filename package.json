@@ -18,5 +18,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/zzzhan/bootstrap-user-login.git"
+  },
+  "dependencies": {
+    "grunt-contrib-copy": "^0.8.0"
   }
 }

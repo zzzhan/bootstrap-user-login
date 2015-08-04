@@ -23,7 +23,6 @@
 	UserLogin.prototype = {
         constructor: UserLogin,
 		signin: function(res) {
-			console.log(res);
 			this.user = res.data;
 			$('.user-name', this.signinPanel).text(this.user.name);
 			this.signinPanel.removeClass('hidden');

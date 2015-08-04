@@ -18,7 +18,7 @@
 			msg = $.userMsg[res.code];
 		  }
 		  al.removeClass('alert-info');
-		  $('p', al).text(msg);
+		  $('p', al).html(msg);
 		}});
 		};
 	  -->

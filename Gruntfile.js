@@ -25,6 +25,14 @@ module.exports = function (grunt) {
         'src/js/*.js'
       ]
     },
+    copy: {
+      jquery_ajax_control: {
+        expand: true,
+        cwd: 'bower_components/jquery-ajax-control/dist/',
+        src: '**/*',
+        dest:'dist/js/'
+      }
+	},
     concat: {
       options: {
         separator: ';',
@@ -148,5 +156,5 @@ module.exports = function (grunt) {
     }
   });
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.registerTask('default', ['jshint','clean','dotpl','concat','cssmin','htmlmin','uglify']);
+  grunt.registerTask('default', ['jshint','clean','dotpl','concat','cssmin','htmlmin','uglify','copy']);
 };
