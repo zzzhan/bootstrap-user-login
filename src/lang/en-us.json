@@ -10,6 +10,8 @@
 "footer":"@2015 company",
 "userName":"User name",
 "email":"Email address",
+"newemail":"New email address",
+"changemail_title":"Change email",
 "password":"Password",
 "signup_title":"Create a account",
 "signup":"Sign up",
@@ -17,7 +19,10 @@
 "signin":"Sign in",
 "login_id":"Username or email",
 "signout":"Sign out",
+"confirm":"Confirm",
+"cancel":"Cancel",
 "reset_pass":"Reset password",
+"oldpass":"Old password",
 "newpass":"New password",
 "newpass_info":"Please input your new password.",
 "profile":"Profile",
@@ -34,5 +39,10 @@
 "name_pattern_err":"Login may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen",
 "pass_pattern_err":"Password needs 7 characters and at least one number",
 "display_pass":"Display password",
-"loading":"Loading"
+"loading":"Loading...",
+"profile_title": "User profile",
+"changepass_title": "Change password",
+"setting_profile":"Profile",
+"setting_email": "Email",
+"setting_password":"Password"
 }

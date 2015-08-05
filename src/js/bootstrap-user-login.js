@@ -7,26 +7,29 @@
     }	
 }(function($){			
 	//var fm = $('.user-form');
+	var signinPanel = $('.user-signin-panel');
+	var signoutPanel = $('.user-signout-panel');
+	var _user = null;
 	var UserLogin = function(fm, opt) {
 	  this.form = fm;
 	  this.opt = opt;
-	  this.signinPanel = $('.user-signin-panel');
-	  this.signoutPanel = $('.user-signout-panel');
 	  fm.on('submit', $.proxy(this.submit, this));
 	  this.url = fm.attr('action');
 	  if(this.url.indexOf('verify')!==-1) {
 		fm.trigger('submit');
 	  }
 	  $('.user-signout-btn').on('click', $.proxy(this.doSignout, this));
-	  $.get('/api/auth', $.proxy(this.signin, this));
+	  if(_user==null) {
+	    $.get('/api/auth', $.proxy(this.signin, this));
+	  }
 	};
 	UserLogin.prototype = {
         constructor: UserLogin,
 		signin: function(res) {
-			this.user = res.data;
-			$('.user-name', this.signinPanel).text(this.user.name);
-			this.signinPanel.removeClass('hidden');
-			this.signoutPanel.addClass('hidden');
+			_user = res.data;
+			$('.user-name', this.signinPanel).text(_user.name);
+			signinPanel.removeClass('hidden');
+			signoutPanel.addClass('hidden');
 			this.form.trigger('signin', [res]);
 		},
 		submit: function(e) {
@@ -45,9 +48,9 @@
 			$.get('/api/auth/signout', $.proxy(this.signout, this));
 		},
 		signout: function() {
-			this.signinPanel.addClass('hidden');
-			this.signoutPanel.removeClass('hidden');
-			delete this.user;
+			signinPanel.addClass('hidden');
+			signoutPanel.removeClass('hidden');
+			_user = null;
 		},
 		success: function(data) {
 			if(this.url.indexOf('signin')!==-1) {
@@ -85,16 +88,24 @@
 				'<p></p></div></div></div>');
 	$.ajaxControl = function(data) {
 		var ret = false;
-		if(data.code===1) {
+		if(typeof data === 'string') {
 			ret = true;
-		} else if(data.code===0) {
 		} else {
-			msgEl.removeClass('hidden');
-			var msg = null;
-			if(!!$.userMsg) {
-			  msg = $.userMsg[data.code];
+			if(data.code===undefined) {
+			  ret = true;				
+			} else {
+				if(data.code===1) {
+					ret = true;
+				} else if(data.code===0) {
+				} else {
+					msgEl.removeClass('hidden');
+					var msg = null;
+					if(!!$.userMsg) {
+					  msg = $.userMsg[data.code];
+					}
+					$('p', msgEl).text(msg||data.code);
+				}
 			}
-			$('p', msgEl).text(msg||data.code);
 		}
 		return ret;
 	};

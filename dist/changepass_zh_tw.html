@@ -1,5 +1,4 @@
-<form class="user-form" action="/api/auth/reset"><h4 class="user-form-heading">Reset password</h4><div class="alert alert-info"><p>Please input your new password.</p></div><div class="form-group"><label for="userPassword" class="sr-only">New password</label><div class="input-group"><input type="password" class="form-control" id="userPassword" name="newpass" placeholder="New password" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('Password needs 7 characters and at least one number')" onchange="this.setCustomValidity('')"> <span class="input-group-addon" title="Display password"><input type="checkbox" aria-label="Display password"></span></div></div><button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="Loading">Reset password</button></form><script language="javascript"><!--	  
-	  window.onload = function() {
+<form class="user-form" action="/api/auth/changepass"><h4 class="user-form-heading">Change password</h4><div class="alert alert-info"><p></p></div><div class="form-group"><label for="userOldPassword" class="sr-only">Old password</label><input type="password" class="form-control" id="userOldPassword" name="oldpass" placeholder="Old password" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('Password needs 7 characters and at least one number')" onchange="this.setCustomValidity('')"></div><div class="form-group"><div class="input-group"><input type="password" class="form-control" id="userPassword" name="newpass" placeholder="New password" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('Password needs 7 characters and at least one number')" onchange="this.setCustomValidity('')"> <span class="input-group-addon" title="Display password"><input type="checkbox" aria-label="Display password"></span></div></div><button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="Loading...">Confirm</button></form><script language="javascript"><!--	  
 		var fm = $('.user-form');
 		fm.userlogin({success:function() {		  
 		  var msg = null;
@@ -17,5 +16,4 @@
 		    $('#userPassword').attr('type', 'password');
 		  }
 		});
-	  };
 	  --></script>

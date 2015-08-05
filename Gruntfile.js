@@ -77,7 +77,8 @@ module.exports = function (grunt) {
         verify:'tmp/verify.tpl',
         reset:'tmp/reset.tpl',
         profile:'tmp/profile.tpl',
-        changepass:'src/tpl/reset.tpl',
+        changepass:'src/tpl/changepass.tpl',
+        changemail:'src/tpl/changemail.tpl',
         framework:'src/tpl/framework.tpl' 
 	  },
 	  framework: {
@@ -90,7 +91,7 @@ module.exports = function (grunt) {
 			  'tmp/forgot.tpl': {title:'${forgot_title}'},
 			  'tmp/verify.tpl': {title:'${verify_title}'},
 			  'tmp/reset.tpl': {title:'${reset_pass}'},
-			  'tmp/profile.tpl': {title:'${signin_title}'}
+			  'tmp/profile.tpl': {title:'${profile_title}'}
 			},
 			renderer: function(k, v) {
 				if(k==='content') {
@@ -157,6 +158,13 @@ module.exports = function (grunt) {
           'tmp/changepass.html': ['src/lang/en-us.json'],
           'tmp/changepass_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
           'tmp/changepass_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      changemail: {
+        files: {
+          'tmp/changemail.html': ['src/lang/en-us.json'],
+          'tmp/changemail_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/changemail_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
       }
     }
