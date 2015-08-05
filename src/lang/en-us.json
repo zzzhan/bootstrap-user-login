@@ -15,6 +15,7 @@
 "signup":"Sign up",
 "signin_title":"Sign in",
 "signin":"Sign in",
+"login_id":"Username or email",
 "signout":"Sign out",
 "reset_pass":"Reset password",
 "newpass":"New password",

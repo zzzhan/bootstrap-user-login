@@ -23,7 +23,7 @@
 	  <!--	  
 	  window.onload = function() {
 	    var onsignin = function() {
-		  window.location.href = '/editor/';
+		  window.location.replace('/editor/');
 		};
 		var fm = $('.user-form');
 		fm.on('signin', onsignin).userlogin({success: onsignin});
