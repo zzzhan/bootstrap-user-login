@@ -11,7 +11,6 @@ module.exports = function (grunt) {
       build: {
     		files: {
     			'dist/js/<%= pkg.file %>.min.js':'src/js/<%=pkg.file %>.js',
-    			'dist/js/jquery-ajax-control.min.js':'src/js/jquery-ajax-control.js',
     			'dist/js/user-message.min.js':'src/js/user-message.js'
     		}
       }
@@ -61,23 +60,12 @@ module.exports = function (grunt) {
           removeComments: true,
           collapseWhitespace: true
         },
-        files: {
-          'dist/signup.html': 'tmp/signup.html',
-          'dist/signup_zh_cn.html': 'tmp/signup_zh_cn.html',
-          'dist/signup_zh_tw.html': 'tmp/signup_zh_tw.html',
-          'dist/signin.html': 'tmp/signin.html',
-          'dist/signin_zh_cn.html': 'tmp/signin_zh_cn.html',
-          'dist/signin_zh_tw.html': 'tmp/signin_zh_tw.html',
-          'dist/forgot.html': 'tmp/forgot.html',
-          'dist/forgot_zh_cn.html': 'tmp/forgot_zh_cn.html',
-          'dist/forgot_zh_tw.html': 'tmp/forgot_zh_tw.html',
-          'dist/verify.html': 'tmp/verify.html',
-          'dist/verify_zh_cn.html': 'tmp/verify_zh_cn.html',
-          'dist/verify_zh_tw.html': 'tmp/verify_zh_tw.html',
-          'dist/reset.html': 'tmp/reset.html',
-          'dist/reset_zh_cn.html': 'tmp/reset_zh_cn.html',
-          'dist/reset_zh_tw.html': 'tmp/reset_zh_tw.html'
-        }
+	    files: [{       
+          expand: true,
+		  cwd: 'tmp',
+		  src: '**/*.html',
+		  dest: 'dist'
+		}]
       }
     },
     clean: ['tmp', 'dist'],
@@ -88,6 +76,8 @@ module.exports = function (grunt) {
         forgot:'tmp/forgot.tpl',
         verify:'tmp/verify.tpl',
         reset:'tmp/reset.tpl',
+        profile:'tmp/profile.tpl',
+        changepass:'src/tpl/reset.tpl',
         framework:'src/tpl/framework.tpl' 
 	  },
 	  framework: {
@@ -99,7 +89,8 @@ module.exports = function (grunt) {
 			  'tmp/signin.tpl': {title:'${signin_title}'},
 			  'tmp/forgot.tpl': {title:'${forgot_title}'},
 			  'tmp/verify.tpl': {title:'${verify_title}'},
-			  'tmp/reset.tpl': {title:'${reset_pass}'}
+			  'tmp/reset.tpl': {title:'${reset_pass}'},
+			  'tmp/profile.tpl': {title:'${signin_title}'}
 			},
 			renderer: function(k, v) {
 				if(k==='content') {
@@ -115,7 +106,8 @@ module.exports = function (grunt) {
           'tmp/signin.tpl': [],
           'tmp/forgot.tpl': [],
           'tmp/verify.tpl': [],
-          'tmp/reset.tpl': []
+          'tmp/reset.tpl': [],
+          'tmp/profile.tpl': []
         }
 	  },
       signup: {
@@ -151,6 +143,20 @@ module.exports = function (grunt) {
           'tmp/reset.html': ['src/lang/en-us.json'],
           'tmp/reset_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
           'tmp/reset_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      profile: {
+        files: {
+          'tmp/profile.html': ['src/lang/en-us.json'],
+          'tmp/profile_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/profile_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
+      },
+      changepass: {
+        files: {
+          'tmp/changepass.html': ['src/lang/en-us.json'],
+          'tmp/changepass_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/changepass_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
       }
     }
