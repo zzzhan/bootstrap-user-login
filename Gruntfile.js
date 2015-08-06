@@ -25,12 +25,19 @@ module.exports = function (grunt) {
       ]
     },
     copy: {
-      jquery_ajax_control: {
-        expand: true,
-        cwd: 'bower_components/jquery-ajax-control/dist/',
-        src: '**/*',
-        dest:'dist/js/'
-      }
+      build: {
+	    files: [{
+			expand: true,
+			cwd: 'bower_components/jquery-ajax-control/dist/',
+			src: '**/*',
+			dest:'dist/js/'
+		  },{
+			expand: true,
+			cwd: 'bower_components/dotpl/dist/',
+			src: '**/*',
+			dest:'dist/js/'
+		  }]
+	  }
 	},
     concat: {
       options: {
@@ -42,6 +49,14 @@ module.exports = function (grunt) {
           "src/css/*.css"
         ],
         dest: "tmp/css/<%=pkg.file %>.css"
+      },
+      allinone:{
+        src: [
+          'dist/js/jquery-ajax-control.min.js',
+          'dist/js/dotpl.min.js',
+          'dist/js/bootstrap-user-login.min.js'
+        ],
+        dest: "dist/js/userlogin_allinone.js"
       }
     },
   	cssmin: {
@@ -77,9 +92,10 @@ module.exports = function (grunt) {
         verify:'tmp/verify.tpl',
         reset:'tmp/reset.tpl',
         profile:'tmp/profile.tpl',
+        framework:'src/tpl/framework.tpl',
         changepass:'src/tpl/changepass.tpl',
         changemail:'src/tpl/changemail.tpl',
-        framework:'src/tpl/framework.tpl' 
+        userinfo:'src/tpl/userinfo.tpl' 
 	  },
 	  framework: {
 		options: {
@@ -166,9 +182,16 @@ module.exports = function (grunt) {
           'tmp/changemail_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
           'tmp/changemail_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
         }
+      },
+      userinfo: {
+        files: {
+          'tmp/userinfo.html': ['src/lang/en-us.json'],
+          'tmp/userinfo_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
+          'tmp/userinfo_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+        }
       }
     }
   });
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  grunt.registerTask('default', ['jshint','clean','dotpl','concat','cssmin','htmlmin','uglify','copy']);
+  grunt.registerTask('default', ['jshint','clean','dotpl','uglify','copy','concat','cssmin','htmlmin']);
 };

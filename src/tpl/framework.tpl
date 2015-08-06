@@ -54,8 +54,7 @@
     </footer>
 	<script src="${cdn_jquery}" type="text/javascript"></script>
 	<script src="${cdn_bootstrap_js}" type="text/javascript"></script>
-	<script src="js/jquery-ajax-control.min.js" type="text/javascript"></script>
-	<script src="js/bootstrap-user-login.min.js" type="text/javascript"></script>
-	<script src="js/user-message.min.js" type="text/javascript"></script>
+	<script src="js/userlogin_allinone.js" type="text/javascript"></script>
+	<script src="${user_message_js}" type="text/javascript"></script>
   </body>
 </html>

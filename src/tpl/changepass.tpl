@@ -1,7 +1,7 @@
-	  <form class="user-form" action="/api/auth/changepass">
+	  <form class="user-form" id="changepassfm" action="/api/auth/changepass">
         <h4 class="user-form-heading">${changepass_title}</h4>
 		<div class="alert alert-info">
-			<p></p>
+			<p>${changpass_info}</p>
 		</div>
 		<div class="form-group">
 		  <label for="userOldPassword" class="sr-only">${oldpass}</label>
@@ -19,12 +19,12 @@
 	  </form>
 	  <script language="javascript">
 	  <!--	  
-		var fm = $('.user-form');
+		var fm = $('#changepassfm');
 		fm.userlogin({success:function() {		  
 		  var msg = null;
 		  var al = $('.user-form .alert');
 		  al.addClass('alert-success');
-		  msg = $.userMsg.reset_pass_success;
+		  msg = $.userMsg.changpass_success;
 		  al.removeClass('alert-info');
 		  $('p', al).text(msg);
 		}});

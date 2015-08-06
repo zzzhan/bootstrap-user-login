@@ -37,6 +37,34 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+@media screen and (max-width:767px)
+{
+.row-offcanvas {
+	transition:0.25s west-out; position: relative; -webkit-transition: all .25s west-out; -o-transition: all .25s west-out;
+}
+.row-offcanvas-right {
+	right: 0px;
+}
+.row-offcanvas-left {
+	left: 0px;
+}
+.row-offcanvas-right .sidebar-offcanvas {
+	right: -50%;
+}
+.row-offcanvas-left .sidebar-offcanvas {
+	left: -50%;
+}
+.active.row-offcanvas-right {
+	right: 50%;
+}
+.active.row-offcanvas-left {
+	left: 50%;
+}
+.sidebar-offcanvas {
+	top: 0px; width: 50%; position: absolute;
+}
+}
 .user-form {
 	margin: 0px auto; padding: 15px; max-width: 400px;
 }

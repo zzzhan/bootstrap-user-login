@@ -1,0 +1,21 @@
+<form id="userinfofm" action="/api/user/<%name%>"><h3 class="user-form-heading">User profile</h3><div class="alert alert-info hidden"><p></p></div><div class="form-group"><label class="control-label">User name</label><div><p class="form-control-static"><%name%>&nbsp;&nbsp;(<%email%>)&nbsp;&nbsp;[mytpl if="<%verify%>===0"]<button class="btn btn-success" id="verifyemail" title="Send a verify link to your email inbox.">Verify</button>[/mytpl]</p></div></div><div class="form-group"><label for="nickname" class="control-label">Nick name</label><input type="text" class="form-control" id="nickname" name="nickname" placeholder="Nick name" value="<%nickname%>"></div><div class="form-group"><label for="company" class="control-label">Company</label><input type="text" class="form-control" id="company" name="company" placeholder="Company" value="<%company%>"></div><button type="submit" class="btn btn-lg btn-primary" data-loading-text="Loading...">Update</button></form><script language="javascript"><!--
+	var fm = $('#userinfofm');		  
+	var msg = null;
+	var al = $('.user-from .alert');
+	fm.userlogin({success:function() {
+	  al.addClass('alert-success');
+	  msg = $.userMsg.userinfo_success;
+	  al.removeClass('hidden');
+	  al.removeClass('alert-info');
+	  $('p', al).text(msg);
+	}});
+	$('#verifyemail').click(function() {
+	  $.post('api/user/verifyemail', function() {
+		  al.addClass('alert-success');
+		  msg = $.userMsg.send_verify_success;
+		  al.removeClass('hidden');
+		  al.removeClass('alert-info');
+		  $('p', al).text(msg);
+	  });
+	});
+--></script>

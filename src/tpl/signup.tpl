@@ -1,8 +1,8 @@
 	  <form class="user-form" action="/api/auth/signup">
         <h4 class="user-form-heading">${signup_title}</h4>
 		<div class="form-group">
-		  <label for="userName" class="sr-only">${userName}</label>
-		  <input type="text" class="form-control" id="userName" name="name" placeholder="${userName}" required autofocus pattern="^[0-9a-zA-Z]+\-?[0-9a-zA-Z]+$" oninvalid="this.setCustomValidity('${name_pattern_err}')" onchange="this.setCustomValidity('')">
+		  <label for="username" class="sr-only">${username}</label>
+		  <input type="text" class="form-control" id="username" name="name" placeholder="${username}" required autofocus pattern="^[0-9a-zA-Z]+\-?[0-9a-zA-Z]+$" oninvalid="this.setCustomValidity('${name_pattern_err}')" onchange="this.setCustomValidity('')">
 		</div>
 		<div class="form-group">
 		  <label for="userEmail" class="sr-only">${email}</label>

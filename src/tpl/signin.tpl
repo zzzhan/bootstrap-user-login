@@ -2,7 +2,7 @@
         <h4 class="user-form-heading">${signin_title}</h4>
 		<div class="form-group">
 		  <label for="loginid" class="sr-only">${login_id}</label>
-		  <input type="email" class="form-control" id="loginid" name="login" placeholder="${login_id}" required autofocus>
+		  <input type="email" class="form-control" id="loginid" name="login" placeholder="${loginid}" required autofocus>
 		</div>
 		<div class="form-group">
 		  <label for="userPassword" class="sr-only">${password}</label>
