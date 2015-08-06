@@ -41,7 +41,7 @@ code {
 @media screen and (max-width:767px)
 {
 .row-offcanvas {
-	transition:0.25s west-out; position: relative; -webkit-transition: all .25s west-out; -o-transition: all .25s west-out;
+	transition:0.25s east-out; position: relative; -webkit-transition: all .25s east-out; -o-transition: all .25s east-out;
 }
 .row-offcanvas-right {
 	right: 0px;

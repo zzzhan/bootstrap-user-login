@@ -9,7 +9,7 @@
 
 	<div class="col-xs-12 col-sm-9">
 	  <p class="pull-right visible-xs">
-		<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Setting</button>
+		<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">${settings}</button>
 	  </p>
 	  <div class="tab-content">
 		<div role="tabpanel" class="tab-pane" id="userinfo"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
@@ -49,6 +49,9 @@
 		  var tag = $('a[href="'+tabid+'"]');
 		  tag.tab('show');		  
 		  $(tabid).addClass('active');
+	  });
+	  $('[data-toggle="offcanvas"]').click(function () {
+		$('.row-offcanvas').toggleClass('active');
 	  });
 	}
   -->
