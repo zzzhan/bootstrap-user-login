@@ -1,4 +1,4 @@
-	  <form class="user-form" action="/api/auth/reset">
+	  <form class="user-form" action="/api/auth/forgot" data-method="put">
         <h4 class="user-form-heading">${reset_pass}</h4>
 		<div class="alert alert-info">
 			<p>${newpass_info}</p>
@@ -22,9 +22,9 @@
 		  var msg = null;
 		  var al = $('.user-form .alert');
 		  al.addClass('alert-success');
-		  msg = $.userMsg.reset_pass_success;
+		  msg = $.userMsg.changpass_success;
 		  al.removeClass('alert-info');
-		  $('p', al).text(msg);
+		  $('p', al).html(msg);
 		}});
 		$('input[type=checkbox]', fm).click(function() {
 		  var val = $(this).is(':checked');

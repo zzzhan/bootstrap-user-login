@@ -23,7 +23,8 @@
 	  <!--	  
 	  window.onload = function() {
 	    var onsignin = function() {
-		  window.location.replace('/editor/');
+		  var hash = window.location.hash;
+		  window.location.replace(hash||'/user/profile');
 		};
 		var fm = $('.user-form');
 		fm.on('signin', onsignin).userlogin({success: onsignin});

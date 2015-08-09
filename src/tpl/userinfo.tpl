@@ -1,12 +1,12 @@
-<form id="userinfofm" action="/api/user/<%name%>">
+<form id="userinfofm" action="/api/users/<%name%>">
 	<h3 class="user-form-heading">${userinfo_title}</h3>
-	<div class="alert alert-info hidden">
+	<div class="alert alert-info hidden" id="userinfo_msg">
 		<p></p>
 	</div>
   <div class="form-group">
 	<label class="control-label">${username}</label>
 	<div>
-	  <p class="form-control-static"><%name%>&nbsp;&nbsp;(<%email%>)&nbsp;&nbsp;[mytpl if="<%verify%>===0"]<button class="btn btn-success" id="verifyemail" title="${email_verify_info}">${email_verify_btn}</button>[/mytpl]</p>
+	  <p class="form-control-static"><%name%>&nbsp;&nbsp;(<%email%>)&nbsp;&nbsp;[mytpl if="<%verified%>===0"]<button class="btn btn-success" id="verifyemail" title="${email_verify_info}">${email_verify_btn}</button>[/mytpl]</p>
 	</div>
   </div>
   <div class="form-group">
@@ -21,24 +21,29 @@
 </form>
 <script language="javascript">
 <!--
-	var fm = $('#userinfofm');		  
-	var msg = null;
-	var al = $('.user-from .alert');
-	fm.userlogin({success:function() {
-	  al.addClass('alert-success');
-	  msg = $.userMsg.userinfo_success;
-	  al.removeClass('hidden');
-	  al.removeClass('alert-info');
-	  $('p', al).text(msg);
-	}});
-	$('#verifyemail').click(function() {
-	  $.post('api/user/verifyemail', function() {
+	(function(){
+		var fm = $('#userinfofm');		  
+		var msg = null;
+		var al = $('#userinfo_msg');
+		fm.userlogin({success:function() {
 		  al.addClass('alert-success');
-		  msg = $.userMsg.send_verify_success;
+		  msg = $.userMsg.userinfo_success;
 		  al.removeClass('hidden');
 		  al.removeClass('alert-info');
 		  $('p', al).text(msg);
-	  });
-	});
+		}});
+		var btn = $('#verifyemail').click(function() {
+		  $.post('/api/auth/verify', function() {
+			  al.addClass('alert-success');
+			  msg = $.userMsg.send_verify_success;
+			  console.log(msg);
+			  al.removeClass('hidden');
+			  al.removeClass('alert-info');
+			  $('p', al).html(msg);
+			  btn.attr('disabled', 'disabled');
+		  });
+		  return false;
+		});
+	})();
 -->
 </script>

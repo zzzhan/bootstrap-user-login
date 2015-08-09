@@ -57,7 +57,7 @@
 "changpass_success":"Your new password is effect, please keep in mind.",
 "userinfo_title":"User profile",
 "userinfo_success":"User profile updated success!",
-"email_verify_btn":"Verify",
+"email_verify_btn":"Verify email",
 "email_verify_info":"Send a verify link to your email inbox.",
 "send_verify_success":"A verify link has sent to your email inbox!Please check it out."
 }

@@ -15,14 +15,12 @@
 	  this.opt = opt;
 	  fm.on('submit', $.proxy(this.submit, this));
 	  this.url = fm.attr('action');
-	  if(this.url.indexOf('verify')!==-1) {
-		fm.trigger('submit');
-	  }
 	  $('.user-signout-btn').on('click', $.proxy(this.doSignout, this));
 	  if(_user==null) {
 	    $.get('/api/auth', $.proxy(this.signin, this));
 	  }
 	};
+	var _fm = null;
 	UserLogin.prototype = {
         constructor: UserLogin,
 		signin: function(res) {
@@ -34,8 +32,9 @@
 		},
 		submit: function(e) {
 			var fm = $(e.target);
+			_fm = fm;			
 			$.ajax($.extend({
-				method:'POST',
+				method:fm.data('method')||'POST',
 				url:this.url,
 				data:fm.serialize(),
 				success: $.proxy(this.success, this),
@@ -103,7 +102,7 @@
 					if(!!$.userMsg) {
 					  msg = $.userMsg[data.code];
 					}
-					$('p', msgEl).text(msg||data.code);
+					$('p', msgEl).html(msg||data.code);
 				}
 			}
 		}
@@ -114,12 +113,18 @@
 	});
 	$('body').append(msgEl);
 	$(document).ajaxError(function(event, request, ajaxOptions, thrownError){
-		$('p', msgEl).text(thrownError);
+		$('p', msgEl).html(thrownError);
 		msgEl.removeClass('hidden');
 	}).ajaxSend(function() {
 		msgEl.addClass('hidden');
-		$('button[type=submit]').button('loading');
+		if(_fm!=null) {
+		  $('button[type=submit]', _fm).button('loading');
+		}		
 	}).ajaxComplete(function() {
-		$('button[type=submit]').button('reset');
+		if(_fm!=null) {
+		  var btn = $('button[type=submit]', _fm);
+		  btn.button('reset');
+		  _fm = null;
+		}
 	});
 }));

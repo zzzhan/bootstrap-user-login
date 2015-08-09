@@ -22,15 +22,15 @@
   <!--
 	window.onload = function() {
 	  dotpl.setDelimiters('<%', '%>', '[mytpl]');
+	  var user = null;
 	  $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 		  var tab = $(e.target);
 		  var url = tab.data('url-selected');
 		  var tabid = tab.attr('href');
-		  var _user = null;
-		  if(_user!=null) {
+		  if(user!=null) {
 			  if(!!url&&!tab.data('url-loaded')) {
 				$.get(url,function(html){
-				  $(tabid).html(dotpl.applyTpl(html, _user));
+				  $(tabid).html(dotpl.applyTpl(html, user));
 				  tab.data('url-loaded', true);
 				});
 			  }
@@ -38,17 +38,13 @@
 			$(tabid).html($.userMsg['1504']);
 		  }
 	  });
-	  $.get('/api/user/auth', function(res) {
-		_user = res.data;
+	  $.get('/api/auth', function(res) {
+		  user = res.data;
 		  var href = window.location.href;
-		  var ind = href.lastIndexOf('#');
-		  var tabid = '#userinfo';
-		  if(ind!==-1) {
-			tabid = href.substring(ind);
-		  }
-		  var tag = $('a[href="'+tabid+'"]');
-		  tag.tab('show');		  
-		  $(tabid).addClass('active');
+		  var hash = window.location.hash||'#userinfo';
+		  var tag = $('a[href="'+hash+'"]');
+		  tag.tab('show');
+		  $(hash).addClass('active');
 	  });
 	  $('[data-toggle="offcanvas"]').click(function () {
 		$('.row-offcanvas').toggleClass('active');

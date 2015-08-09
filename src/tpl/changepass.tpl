@@ -1,6 +1,6 @@
 	  <form class="user-form" id="changepassfm" action="/api/auth/changepass">
         <h4 class="user-form-heading">${changepass_title}</h4>
-		<div class="alert alert-info">
+		<div class="alert alert-info" id="changepass_msg">
 			<p>${changpass_info}</p>
 		</div>
 		<div class="form-group">
@@ -18,15 +18,16 @@
 		<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${confirm}</button>
 	  </form>
 	  <script language="javascript">
-	  <!--	  
+	  <!--
+	  (function(){
 		var fm = $('#changepassfm');
 		fm.userlogin({success:function() {		  
 		  var msg = null;
-		  var al = $('.user-form .alert');
+		  var al = $('#changepass_msg');
 		  al.addClass('alert-success');
 		  msg = $.userMsg.changpass_success;
 		  al.removeClass('alert-info');
-		  $('p', al).text(msg);
+		  $('p', al).html(msg);
 		}});
 		$('input[type=checkbox]', fm).click(function() {
 		  var val = $(this).is(':checked');
@@ -36,5 +37,6 @@
 		    $('#userPassword').attr('type', 'password');
 		  }
 		});
+	  })();
 	  -->
 	 </script>

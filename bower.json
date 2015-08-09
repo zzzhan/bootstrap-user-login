@@ -29,6 +29,7 @@
   "dependencies": {
     "jquery": "^1.10",
     "bootstrap": ">=2",
-    "jquery-ajax-control": "https://github.com/zzzhan/jquery-ajax-control.git"
+    "jquery-ajax-control": "https://github.com/zzzhan/jquery-ajax-control.git",
+    "dotpl": "https://github.com/zzzhan/dotpl-js.git"
   }
 }

@@ -1,11 +1,17 @@
-<form class="user-form" id="changemailfm" action="/api/auth/changemail"><h4 class="user-form-heading">Change email</h4><div class="alert alert-info"><p>Hi, please input your new email address, then we will send a email for you to verify.</p></div><div class="form-group"><label>Old email address</label><p class="form-control-static"><%email%></p></div><div class="form-group"><label for="newemail">New email address</label><input type="email" class="form-control" id="newemail" name="email" placeholder="New email address" required pattern="(?=.*\d)(?=.*[a-zA-Z])\w{7,}" oninvalid="this.setCustomValidity('Password needs 7 characters and at least one number')" onchange="this.setCustomValidity('')"></div><button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="Loading...">Confirm</button></form><script language="javascript"><!--
+<form class="user-form" id="changemailfm" action="/api/auth/changemail"><h4 class="user-form-heading">Change email</h4><div class="alert alert-info" id="changemail_msg"><p>Hi, please input your new email address, then we will send a email for you to verify.</p></div><div class="form-group"><label>Old email address</label><p class="form-control-static"><%email%></p></div><div class="form-group"><label for="newemail">New email address</label><input type="email" class="form-control" id="newemail" name="email" placeholder="New email address"></div><button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="Loading...">Confirm</button></form><script language="javascript"><!--
+	  (function(){
 		var fm = $('#changemailfm');
 		fm.userlogin({success:function() {		  
 		  var msg = null;
-		  var al = $('.user-from .alert');
+		  var al = $('#changemail_msg');
 		  al.addClass('alert-success');
 		  msg = $.userMsg.changemail_success;
 		  al.removeClass('alert-info');
-		  $('p', al).text(msg);
+		  $('p', al).html(msg);
+		  $('#newemail').attr('readonly', true);
+		  setTimeout(function(){
+		    $('button', fm).prop('disabled', 'disabled');
+		  }, 500);
 		}});
+	  })();
 	  --></script>
