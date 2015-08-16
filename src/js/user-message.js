@@ -13,6 +13,7 @@
 		'send_verify_success':'A email has sent to you, please check your inbox to verify.',
 		'changemail_success':'A email has sent to your new email address, please check to verify.',
 		'changpass_success':'New password was setted!',
+		'userinfo_success':'Profile updated!',
 		'unknown':'Unknown error'
 	}, $.userMsg);
 })(window.jQuery||this);

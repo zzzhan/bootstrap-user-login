@@ -1,4 +1,4 @@
-<form id="userinfofm" action="/api/users/<%name%>">
+<form id="userinfofm" action="/api/auth/profile" data-method="PUT">
 	<h3 class="user-form-heading">${userinfo_title}</h3>
 	<div class="alert alert-info hidden" id="userinfo_msg">
 		<p></p>
@@ -30,7 +30,7 @@
 		  msg = $.userMsg.userinfo_success;
 		  al.removeClass('hidden');
 		  al.removeClass('alert-info');
-		  $('p', al).text(msg);
+		  $('p', al).html(msg);
 		}});
 		var btn = $('#verifyemail').click(function() {
 		  $.post('/api/auth/verify', function() {

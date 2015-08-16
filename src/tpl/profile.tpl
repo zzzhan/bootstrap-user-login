@@ -35,7 +35,7 @@
 				});
 			  }
 		  } else {
-			$(tabid).html($.userMsg['1504']);
+			$(tabid).html($.userMsg['1501']);
 		  }
 	  });
 	  $.get('/api/auth', function(res) {
