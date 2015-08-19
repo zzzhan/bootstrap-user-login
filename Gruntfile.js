@@ -86,12 +86,13 @@ module.exports = function (grunt) {
     clean: ['tmp', 'dist'],
     dotpl: {
 	  options: {
-        signup:'tmp/signup.tpl',
-        signin:'tmp/signin.tpl',
-        forgot:'tmp/forgot.tpl',
-        verify:'tmp/verify.tpl',
-        reset:'tmp/reset.tpl',
-        profile:'tmp/profile.tpl',
+        signup:'tmp/tpl/signup.tpl',
+        signin:'tmp/tpl/signin.tpl',
+        forgot:'tmp/tpl/forgot.tpl',
+        verify:'tmp/tpl/verify.tpl',
+        reset:'tmp/tpl/reset.tpl',
+        profile:'tmp/tpl/profile.tpl',
+        main:'tmp/tpl/profile.tpl',
         framework:'src/tpl/framework.tpl',
         changepass:'src/tpl/changepass.tpl',
         changemail:'src/tpl/changemail.tpl',
@@ -101,93 +102,91 @@ module.exports = function (grunt) {
 		options: {
 			opener:'<%',
 			closer:'%>',
-			mapping: {
-			  'tmp/signup.tpl': {title:'${signup_title}'},
-			  'tmp/signin.tpl': {title:'${signin_title}'},
-			  'tmp/forgot.tpl': {title:'${forgot_title}'},
-			  'tmp/verify.tpl': {title:'${verify_title}'},
-			  'tmp/reset.tpl': {title:'${reset_pass}'},
-			  'tmp/profile.tpl': {title:'${profile_title}'}
-			},
+			tag:'[tpl]',
 			renderer: function(k, v) {
 				if(k==='content') {
-					v = grunt.file.read(this.ctx.dest.replace('tmp', 'src/tpl'));
-				} else {
-					v = this.options().mapping[this.ctx.dest][k];
+					v = grunt.file.read(this.ctx.dest.replace('tmp', 'src'));
 				}
 				return v;
 			}
 		},
         files: {
-          'tmp/signup.tpl': [],
-          'tmp/signin.tpl': [],
-          'tmp/forgot.tpl': [],
-          'tmp/verify.tpl': [],
-          'tmp/reset.tpl': [],
-          'tmp/profile.tpl': []
+          'tmp/tpl/signup.tpl': [],
+          'tmp/tpl/signin.tpl': [],
+          'tmp/tpl/forgot.tpl': [],
+          'tmp/tpl/verify.tpl': [],
+          'tmp/tpl/reset.tpl': [],
+          'tmp/tpl/profile.tpl': []
         }
 	  },
+      main: {
+        files: {
+          'tmp/index.html': ['src/lang/en-US/main.json','src/lang/en-US/profile.json'],
+          'tmp/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/profile.json'],
+          'tmp/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/profile.json']
+        }
+      },
       signup: {
         files: {
-          'tmp/signup.html': ['src/lang/en-us.json'],
-          'tmp/signup_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/signup_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/signup/index.html': ['src/lang/en-US/main.json','src/lang/en-US/signup.json'],
+          'tmp/signup/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/signup.json'],
+          'tmp/signup/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/signup.json']
         }
       },
       signin: {
         files: {
-          'tmp/signin.html': ['src/lang/en-us.json'],
-          'tmp/signin_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/signin_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/signin/index.html': ['src/lang/en-US/main.json','src/lang/en-US/signin.json'],
+          'tmp/signin/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/signin.json'],
+          'tmp/signin/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/signin.json']
         }
       },
       forgot: {
         files: {
-          'tmp/forgot.html': ['src/lang/en-us.json'],
-          'tmp/forgot_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/forgot_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/forgot/index.html': ['src/lang/en-US/main.json','src/lang/en-US/forgot.json'],
+          'tmp/forgot/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/forgot.json'],
+          'tmp/forgot/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/forgot.json']
         }
       },
       verify: {
         files: {
-          'tmp/verify.html': ['src/lang/en-us.json'],
-          'tmp/verify_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/verify_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/verify/index.html': ['src/lang/en-US/main.json','src/lang/en-US/verify.json'],
+          'tmp/verify/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/verify.json'],
+          'tmp/verify/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/verify.json']
         }
       },
       reset: {
         files: {
-          'tmp/reset.html': ['src/lang/en-us.json'],
-          'tmp/reset_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/reset_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/reset/index.html': ['src/lang/en-US/main.json','src/lang/en-US/reset.json'],
+          'tmp/reset/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/reset.json'],
+          'tmp/reset/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/reset.json']
         }
       },
       profile: {
         files: {
-          'tmp/profile.html': ['src/lang/en-us.json'],
-          'tmp/profile_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/profile_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/profile/index.html': ['src/lang/en-US/main.json','src/lang/en-US/profile.json'],
+          'tmp/profile/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/profile.json'],
+          'tmp/profile/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/profile.json']
         }
       },
       changepass: {
         files: {
-          'tmp/changepass.html': ['src/lang/en-us.json'],
-          'tmp/changepass_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/changepass_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/changepass/index.html': ['src/lang/en-US/main.json'],
+          'tmp/changepass/index_zh-CN.html': ['src/lang/en-CN/main.json'],
+          'tmp/changepass/index_zh-TW.html': ['src/lang/en-TW/main.json']
         }
       },
       changemail: {
         files: {
-          'tmp/changemail.html': ['src/lang/en-us.json'],
-          'tmp/changemail_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/changemail_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/changemail/index.html': ['src/lang/en-US/main.json'],
+          'tmp/changemail/index_zh-CN.html': ['src/lang/en-CN/main.json'],
+          'tmp/changemail/index_zh-TW.html': ['src/lang/en-TW/main.json']
         }
       },
       userinfo: {
         files: {
-          'tmp/userinfo.html': ['src/lang/en-us.json'],
-          'tmp/userinfo_zh_cn.html': ['src/lang/en-us.json', 'src/lang/zh-cn.json'],
-          'tmp/userinfo_zh_tw.html': ['src/lang/en-us.json', 'src/lang/zh-tw.json']
+          'tmp/userinfo/index.html': ['src/lang/en-US/main.json'],
+          'tmp/userinfo/index_zh-CN.html': ['src/lang/en-CN/main.json'],
+          'tmp/userinfo/index_zh-TW.html': ['src/lang/en-TW/main.json']
         }
       }
     }

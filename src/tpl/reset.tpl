@@ -11,6 +11,7 @@
               <input type="checkbox" aria-label="${display_pass}">
             </span>
 		  </div>
+	      <span class="help-block">${pass_pattern_err}</span>
 		</div>
 		<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${reset_pass}</button>
 	  </form>

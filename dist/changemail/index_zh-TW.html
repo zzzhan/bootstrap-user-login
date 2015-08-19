@@ -1,0 +1,17 @@
+<form class="user-form" id="changemailfm" action="/api/auth/changemail"><h4 class="user-form-heading"></h4><div class="alert alert-info" id="changemail_msg"><p></p></div><div class="form-group"><label></label><p class="form-control-static"><%email%></p></div><div class="form-group"><label for="newemail"></label><input type="email" class="form-control" id="newemail" name="email" placeholder=""></div><button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text=""></button></form><script language="javascript"><!--
+	  (function(){
+		var fm = $('#changemailfm');
+		fm.userlogin({success:function() {		  
+		  var msg = null;
+		  var al = $('#changemail_msg');
+		  al.addClass('alert-success');
+		  msg = $.userMsg.changemail_success;
+		  al.removeClass('alert-info');
+		  $('p', al).html(msg);
+		  $('#newemail').attr('readonly', true);
+		  setTimeout(function(){
+		    $('button', fm).prop('disabled', 'disabled');
+		  }, 500);
+		}});
+	  })();
+	  --></script>

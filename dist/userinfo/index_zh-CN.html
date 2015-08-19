@@ -1,0 +1,26 @@
+<form id="userinfofm" action="/api/auth/profile" data-method="PUT"><h3 class="user-form-heading"></h3><div class="alert alert-info hidden" id="userinfo_msg"><p></p></div><div class="form-group"><label class="control-label"></label><div><p class="form-control-static"><%name%>&nbsp;&nbsp;(<%email%>)&nbsp;&nbsp;[mytpl if="<%verified%>===0"]<button class="btn btn-success" id="verifyemail" title=""></button>[/mytpl]</p></div></div><div class="form-group"><label for="nickname" class="control-label"></label><input type="text" class="form-control" id="nickname" name="nickname" placeholder="" value="<%nickname%>"></div><div class="form-group"><label for="company" class="control-label"></label><input type="text" class="form-control" id="company" name="company" placeholder="" value="<%company%>"></div><button type="submit" class="btn btn-lg btn-primary" data-loading-text=""></button></form><script language="javascript"><!--
+	(function(){
+		var fm = $('#userinfofm');		  
+		var msg = null;
+		var al = $('#userinfo_msg');
+		fm.userlogin({success:function() {
+		  al.addClass('alert-success');
+		  msg = $.userMsg.userinfo_success;
+		  al.removeClass('hidden');
+		  al.removeClass('alert-info');
+		  $('p', al).html(msg);
+		}});
+		var btn = $('#verifyemail').click(function() {
+		  $.post('/api/auth/verify', function() {
+			  al.addClass('alert-success');
+			  msg = $.userMsg.send_verify_success;
+			  console.log(msg);
+			  al.removeClass('hidden');
+			  al.removeClass('alert-info');
+			  $('p', al).html(msg);
+			  btn.attr('disabled', 'disabled');
+		  });
+		  return false;
+		});
+	})();
+--></script>
