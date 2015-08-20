@@ -27,7 +27,7 @@
       </div>
       <nav id="bs-navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-	    <tpl for="top_menus">
+	    <tpl for="top_menu">
         <li>
           <a href="${link}">${name}</a>
         </li>
@@ -36,9 +36,9 @@
       <ul class="nav navbar-nav navbar-right">
 		<li class="user-sign active"><a href="/user/signup#/editor">${signup}</a></i>
 		<li class="user-sign"><a href="/user/signin#/editor">${signin}</a></i>
-		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${lang_title}</a>
+		<li class="user-menu dropdown hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>&nbsp;<span class="user-name"></span><span class="caret"></span></a>
 		  <ul class="dropdown-menu">
-			<tpl for="langs">
+			<tpl for="user_menu">
 			  <li><a href="${link}">${name}</a></li>
 			</tpl>
 		  </ul>
@@ -54,19 +54,19 @@
     <footer class="footer">
 	  <div class="container">
 	    <div class="row">
-		  <div class="col-md-8">
+		  <div class="col-md-10">
 			<ul class="list-inline text-muted">
 			  <li>${copyright}</li>
-			<tpl for="bottom_menus">
+			<tpl for="bottom_menu">
 			<li>
 			  <a href="${link}">${name}</a>
 			</li>
 			</tpl>
 			</ul>
 		  </div>
-		  <div class="col-md-4">
-			<ul class="list-inline text-muted pull-right">
-			<li class="dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${lang_title}</a>
+		  <div class="col-md-2">
+			<ul class="list-inline text-muted">
+			<li class="dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${lang_title}<span class="caret"></span></a>
 			  <ul class="dropdown-menu">
 				<tpl for="langs">
 				  <li><a href="${link}">${name}</a></li>
