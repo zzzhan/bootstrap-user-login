@@ -7,15 +7,15 @@
     }	
 }(function($){			
 	//var fm = $('.user-form');
-	var signinPanel = $('.user-signin-panel');
-	var signoutPanel = $('.user-signout-panel');
+	var signinPanel = $('.user-menu');
+	var signoutPanel = $('.user-sign');
 	var _user = null;
 	var UserLogin = function(fm, opt) {
 	  this.form = fm;
 	  this.opt = opt;
 	  fm.on('submit', $.proxy(this.submit, this));
 	  this.url = fm.attr('action');
-	  $('.user-signout-btn').on('click', $.proxy(this.doSignout, this));
+	  $('li:last', signinPanel).on('click', $.proxy(this.doSignout, this));
 	  if(_user==null) {
 	    $.get('/api/auth', $.proxy(this.signin, this));
 	  }
@@ -43,8 +43,10 @@
 			//$.post(this.url, fm.serialize(), $.proxy(this.success, this));
 			return false;
 		},
-		doSignout: function() {
+		doSignout: function(e) {
+			e.preventDefault();
 			$.get('/api/auth/signout', $.proxy(this.signout, this));
+			return false;
 		},
 		signout: function() {
 			signinPanel.addClass('hidden');

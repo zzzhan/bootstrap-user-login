@@ -11,8 +11,8 @@
 	</div>
 	<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${signin}</button>
 	<p>
-	  <a href="forgot">${forgot}</a> |
-	  <a href="signup">${signup_title}</a>
+	  <a href="../forgot">${forgot}</a> |
+	  <a href="../signup">${signup_title}</a>
 	</p>
 	</form>
 </div>
@@ -25,7 +25,7 @@
 		  $('a[href="signup"]', fm).attr('href', 'signup'+hash);
 		}
 	    var onsignin = function() {
-		  window.location.replace(hash.substring(1)||'/user/profile');
+		  window.location.replace(hash.substring(1)||'/user');
 		};
 		fm.userlogin({success: onsignin}).on('signin', onsignin);
 		};

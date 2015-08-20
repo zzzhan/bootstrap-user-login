@@ -91,7 +91,6 @@ module.exports = function (grunt) {
         forgot:'tmp/tpl/forgot.tpl',
         verify:'tmp/tpl/verify.tpl',
         reset:'tmp/tpl/reset.tpl',
-        profile:'tmp/tpl/profile.tpl',
         main:'tmp/tpl/profile.tpl',
         framework:'src/tpl/framework.tpl',
         changepass:'src/tpl/changepass.tpl',
@@ -159,13 +158,6 @@ module.exports = function (grunt) {
           'tmp/reset/index.html': ['src/lang/en-US/main.json','src/lang/en-US/reset.json'],
           'tmp/reset/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/reset.json'],
           'tmp/reset/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/reset.json']
-        }
-      },
-      profile: {
-        files: {
-          'tmp/profile/index.html': ['src/lang/en-US/main.json','src/lang/en-US/profile.json'],
-          'tmp/profile/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/profile.json'],
-          'tmp/profile/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/profile.json']
         }
       },
       changepass: {
