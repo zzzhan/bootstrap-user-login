@@ -11,7 +11,9 @@ module.exports = function (grunt) {
       build: {
     		files: {
     			'dist/js/<%= pkg.file %>.min.js':'src/js/<%=pkg.file %>.js',
-    			'dist/js/user-message.min.js':'src/js/user-message.js'
+    			'dist/js/user-message.min.js':'src/js/user-message.js',
+          'dist/js/user-message_zh-CN.min.js':'src/js/user-message_zh-CN.js',
+          'dist/js/user-message_zh-TW.min.js':'src/js/user-message_zh-TW.js'
     		}
       }
     },
@@ -121,64 +123,64 @@ module.exports = function (grunt) {
       main: {
         files: {
           'tmp/index.html': ['src/lang/en-US/main.json','src/lang/en-US/profile.json'],
-          'tmp/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/profile.json'],
-          'tmp/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/profile.json']
+          'tmp/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/profile.json'],
+          'tmp/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/profile.json']
         }
       },
       signup: {
         files: {
           'tmp/signup/index.html': ['src/lang/en-US/main.json','src/lang/en-US/signup.json'],
-          'tmp/signup/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/signup.json'],
-          'tmp/signup/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/signup.json']
+          'tmp/signup/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/signup.json'],
+          'tmp/signup/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/signup.json']
         }
       },
       signin: {
         files: {
           'tmp/signin/index.html': ['src/lang/en-US/main.json','src/lang/en-US/signin.json'],
-          'tmp/signin/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/signin.json'],
-          'tmp/signin/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/signin.json']
+          'tmp/signin/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/signin.json'],
+          'tmp/signin/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/signin.json']
         }
       },
       forgot: {
         files: {
           'tmp/forgot/index.html': ['src/lang/en-US/main.json','src/lang/en-US/forgot.json'],
-          'tmp/forgot/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/forgot.json'],
-          'tmp/forgot/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/forgot.json']
+          'tmp/forgot/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/forgot.json'],
+          'tmp/forgot/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/forgot.json']
         }
       },
       verify: {
         files: {
           'tmp/verify/index.html': ['src/lang/en-US/main.json','src/lang/en-US/verify.json'],
-          'tmp/verify/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/verify.json'],
-          'tmp/verify/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/verify.json']
+          'tmp/verify/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/verify.json'],
+          'tmp/verify/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/verify.json']
         }
       },
       reset: {
         files: {
           'tmp/reset/index.html': ['src/lang/en-US/main.json','src/lang/en-US/reset.json'],
-          'tmp/reset/index_zh-CN.html': ['src/lang/en-CN/main.json','src/lang/en-CN/reset.json'],
-          'tmp/reset/index_zh-TW.html': ['src/lang/en-TW/main.json','src/lang/en-TW/reset.json']
+          'tmp/reset/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/reset.json'],
+          'tmp/reset/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/reset.json']
         }
       },
       changepass: {
         files: {
           'tmp/changepass/index.html': ['src/lang/en-US/main.json'],
-          'tmp/changepass/index_zh-CN.html': ['src/lang/en-CN/main.json'],
-          'tmp/changepass/index_zh-TW.html': ['src/lang/en-TW/main.json']
+          'tmp/changepass/index_zh-CN.html': ['src/lang/zh-CN/main.json'],
+          'tmp/changepass/index_zh-TW.html': ['src/lang/zh-TW/main.json']
         }
       },
       changemail: {
         files: {
           'tmp/changemail/index.html': ['src/lang/en-US/main.json'],
-          'tmp/changemail/index_zh-CN.html': ['src/lang/en-CN/main.json'],
-          'tmp/changemail/index_zh-TW.html': ['src/lang/en-TW/main.json']
+          'tmp/changemail/index_zh-CN.html': ['src/lang/zh-CN/main.json'],
+          'tmp/changemail/index_zh-TW.html': ['src/lang/zh-TW/main.json']
         }
       },
       userinfo: {
         files: {
           'tmp/userinfo/index.html': ['src/lang/en-US/main.json'],
-          'tmp/userinfo/index_zh-CN.html': ['src/lang/en-CN/main.json'],
-          'tmp/userinfo/index_zh-TW.html': ['src/lang/en-TW/main.json']
+          'tmp/userinfo/index_zh-CN.html': ['src/lang/zh-CN/main.json'],
+          'tmp/userinfo/index_zh-TW.html': ['src/lang/zh-TW/main.json']
         }
       }
     }
