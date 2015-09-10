@@ -95,9 +95,10 @@
 			} else {
 				if(data.code===1) {
 					ret = true;
-				} else if(data.code===0) {
 					alertMsg('done', 'alert-success');
-					setTimeout(function(){msgEl.addClass('hidden');}, 4000);
+					setTimeout(function(){msgEl.addClass('hidden');}, 1500);
+				} else if(data.code===0) {
+					msgEl.addClass('hidden');
 				} else {
 					alertMsg(data.code, 'alert-danger');
 				}
@@ -115,15 +116,15 @@
 		  msg = $.userMsg[k];
 		}
 		$('p', msgEl).html(msg||k);	
-		msgEl.removeClass('alert-success');
-		msgEl.removeClass('alert-danger');
-		msgEl.removeClass('alert-info');
-		msgEl.addClass(type||'alert-info');
+		var alert = $('.alert', msgEl);
+		alert.removeClass('alert-success');
+		alert.removeClass('alert-danger');
+		alert.removeClass('alert-info');
+		alert.addClass(type||'alert-info');
 		msgEl.removeClass('hidden');
 	};
 	$(document).ajaxError(function(event, request, ajaxOptions, thrownError){
-		$('p', msgEl).html(thrownError);
-		msgEl.removeClass('hidden');
+		alertMsg(thrownError,'alert-danger');
 	}).ajaxSend(function() {
 		alertMsg('loading', 'alert-info');
 	});
