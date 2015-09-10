@@ -20,7 +20,6 @@
 	    $.get('/api/auth', $.proxy(this.signin, this));
 	  }
 	};
-	var _fm = null;
 	UserLogin.prototype = {
         constructor: UserLogin,
 		signin: function(res) {
@@ -32,7 +31,6 @@
 		},
 		submit: function(e) {
 			var fm = $(e.target);
-			_fm = fm;			
 			$.ajax($.extend({
 				method:fm.data('method')||'POST',
 				url:this.url,
@@ -83,7 +81,7 @@
             }
         });
     };
-	var msgEl = $('<div class="user-message hidden"><div style="padding: 5px;">'+
+	var msgEl = $('<div class="user-message hidden"><div>'+
 		'<div class="alert alert-danger .alert-dismissible user-inner-message">'+
 	            '<button type="button" class="close" aria-label="Close">&times;</button>'+
 				'<p></p></div></div></div>');
@@ -98,13 +96,10 @@
 				if(data.code===1) {
 					ret = true;
 				} else if(data.code===0) {
+					alertMsg('done', 'alert-success');
+					setTimeout(function(){msgEl.addClass('hidden');}, 4000);
 				} else {
-					msgEl.removeClass('hidden');
-					var msg = null;
-					if(!!$.userMsg) {
-					  msg = $.userMsg[data.code];
-					}
-					$('p', msgEl).html(msg||data.code);
+					alertMsg(data.code, 'alert-danger');
 				}
 			}
 		}
@@ -114,19 +109,22 @@
 		msgEl.addClass('hidden');
 	});
 	$('body').append(msgEl);
+	var alertMsg = function(k, type) {
+		var msg = null;	
+		if(!!$.userMsg) {
+		  msg = $.userMsg[k];
+		}
+		$('p', msgEl).html(msg||k);	
+		msgEl.removeClass('alert-success');
+		msgEl.removeClass('alert-danger');
+		msgEl.removeClass('alert-info');
+		msgEl.addClass(type||'alert-info');
+		msgEl.removeClass('hidden');
+	};
 	$(document).ajaxError(function(event, request, ajaxOptions, thrownError){
 		$('p', msgEl).html(thrownError);
 		msgEl.removeClass('hidden');
 	}).ajaxSend(function() {
-		msgEl.addClass('hidden');
-		if(_fm!=null) {
-		  $('button[type=submit]', _fm).button('loading');
-		}		
-	}).ajaxComplete(function() {
-		if(_fm!=null) {
-		  var btn = $('button[type=submit]', _fm);
-		  btn.button('reset');
-		  _fm = null;
-		}
+		alertMsg('loading', 'alert-info');
 	});
 }));

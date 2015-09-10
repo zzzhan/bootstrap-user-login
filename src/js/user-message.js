@@ -14,6 +14,8 @@
 		'changemail_success':'A email has sent to your new email address, please check to verify.',
 		'changpass_success':'New password was setted!',
 		'userinfo_success':'Profile updated!',
-		'unknown':'Unknown error'
+		'unknown':'Unknown error',
+		'done':'Done.',
+		'loading':'Loading...'
 	}, $.userMsg);
 })(window.jQuery||this);
