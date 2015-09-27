@@ -1,6 +1,6 @@
 (function($) {
 	$.userMsg = $.extend({
-		'1500':'Oh snap! You got a system error!',
+		'1500':'Oh snap! Something went wrong!',
 		'1501':'Hi, please <a href=\"/user/signin#/editor\" class=\"alert-link\">sign in</a>.',
 		'1503':'User name or password invalid.',
 		'1504':'Wrong password.',
@@ -14,7 +14,7 @@
 		'changemail_success':'A email has sent to your new email address, please check to verify.',
 		'changpass_success':'New password was setted!',
 		'userinfo_success':'Profile updated!',
-		'unknown':'Unknown error',
+		'unknown':'Something went wrong!',
 		'done':'Done.',
 		'loading':'Loading...'
 	}, $.userMsg);
