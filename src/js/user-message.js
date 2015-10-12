@@ -1,5 +1,14 @@
 (function($) {
 	$.userMsg = $.extend({
+		'1400':'Paremeter can not be empty.',
+		'1401':'Login may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.',
+		'1402':'The user name is in used.',
+		'1403':'The email is in used.',
+		'1404':'Invalid email address.',
+		'1405':'Password needs 7 characters and at least one number.',
+		'1406':'The old and new password can not be the same.',
+		'1407':'The old and new email can not be the same.',
+		'1408':'Paremeter invalid.',		
 		'1500':'Oh snap! Something went wrong!',
 		'1501':'Hi, please <a href=\"/user/signin#/editor\" class=\"alert-link\">sign in</a>.',
 		'1503':'User name or password invalid.',
