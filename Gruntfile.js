@@ -92,6 +92,7 @@ module.exports = function (grunt) {
         signin:'tmp/tpl/signin.tpl',
         forgot:'tmp/tpl/forgot.tpl',
         verify:'tmp/tpl/verify.tpl',
+        verifyemailchanged:'tmp/tpl/verifyemailchanged.tpl',
         reset:'tmp/tpl/reset.tpl',
         main:'tmp/tpl/profile.tpl',
         framework:'src/tpl/framework.tpl',
@@ -116,6 +117,7 @@ module.exports = function (grunt) {
           'tmp/tpl/signin.tpl': [],
           'tmp/tpl/forgot.tpl': [],
           'tmp/tpl/verify.tpl': [],
+          'tmp/tpl/verifyemailchanged.tpl': [],
           'tmp/tpl/reset.tpl': [],
           'tmp/tpl/profile.tpl': []
         }
@@ -153,6 +155,13 @@ module.exports = function (grunt) {
           'tmp/verify/index.html': ['src/lang/en-US/main.json','src/lang/en-US/verify.json'],
           'tmp/verify/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/verify.json'],
           'tmp/verify/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/verify.json']
+        }
+      },
+      verifyemailchanged: {
+        files: {
+          'tmp/verifyemailchanged/index.html': ['src/lang/en-US/main.json','src/lang/en-US/verifyemailchanged.json'],
+          'tmp/verifyemailchanged/index_zh-CN.html': ['src/lang/zh-CN/main.json','src/lang/zh-CN/verifyemailchanged.json'],
+          'tmp/verifyemailchanged/index_zh-TW.html': ['src/lang/zh-TW/main.json','src/lang/zh-TW/verifyemailchanged.json']
         }
       },
       reset: {

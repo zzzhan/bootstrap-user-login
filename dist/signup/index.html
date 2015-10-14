@@ -2,7 +2,7 @@
 	  window.onload = function() {
 	    var onsignin = function() {
 		  var hash = window.location.hash;
-		  window.location.replace(hash||'/user/profile');
+		  window.location.replace(hash.substring(1)||'/user/profile');
 		};
 		var fm = $('.user-form');
 		fm.on('signin', onsignin).userlogin({success: onsignin});

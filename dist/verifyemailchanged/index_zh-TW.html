@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charset="utf-8"><title></title><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="keywords" content="HTML5工具, HTML5畫畫, 圖形, 作圖軟件, 流程圖軟件, 長方形, 圓形, 線條, 箭頭, 流程圖, 氣泡圖"><meta name="description" content="Shapefly, 壹個輕量,強大的的在線工具與服務,讓妳輕松直截了當地在頁面上插入圖形或流程圖, 例如:長方形,圓形,線條,箭頭,流程圖和氣泡圖等."><link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"><link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"><link href="/user/css/bootstrap-user-login.min.css" rel="stylesheet"><link href="/css/shapefly.min.css" rel="stylesheet"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="icon" href="/favicon.ico"></head><body><header class="navbar navbar-inverse navbar-fixed-top" id="top" role="banner"><div class="container"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a href="/" class="navbar-brand">Shapefly</a></div><nav id="bs-navbar" class="collapse navbar-collapse"><ul class="nav navbar-nav"><li><a href="/editor">開始使用</a></li><li><a href="/plugin">插件</a></li><li><a href="/about">關於</a></li></ul><ul class="nav navbar-nav navbar-right"><li class="user-sign active"><a href="/user/signup#/editor">註冊</a></li><li class="user-sign"><a href="/user/signin#/editor">登錄</a></li><li class="user-menu dropdown hidden"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>&nbsp;<span class="user-name"></span><span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/user">個人信息</a></li><li><a href="/signout">退出</a></li></ul></li></ul></nav></div></header><main class="container" id="content" role="main" tabindex="-1"><form class="user-form" action="/api/auth/changemail" data-method="put" data-skip-ajax-control="true"><h4 class="user-form-heading">用戶驗證</h4><div class="alert alert-info" data-verify-success="用戶驗證已通過!" data-verify-failure="用戶驗證失敗(驗證碼已失效)!請重新登錄再進行郵箱地址驗證."><p><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>驗證中...</p></div></form><script language="javascript"><!--	  
+	  window.onload = function() {
+		var fm = $('.user-form');
+		fm.userlogin({success:function(res){
+		  var msg = null;
+		  var al = $('.user-form .alert');
+		  if(res.code===1) {
+			al.addClass('alert-success');
+			msg = al.data('verify-success');
+		  } else {
+			al.addClass('alert-danger');
+			msg = al.data('verify-failure');
+		  }
+		  al.removeClass('alert-info');
+		  $('p', al).html(msg);
+		}});
+		fm.trigger('submit');
+		};
+	  --></script></main><footer class="footer"><div class="container"><div class="row"><div class="col-md-10"><ul class="list-inline text-muted"><li>&copy; 2015 Shapefly.</li><li><a href="/plugin">插件</a></li><li><a href="/about">關於</a></li></ul></div><div class="col-md-2"><ul class="list-inline text-muted"><li class="dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">語言<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="/lang/en-US">English</a></li><li><a href="/lang/zh-CN">简体中文</a></li></ul></li></ul></div></div></div></footer><script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script><script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script><script src="/user/js/userlogin_allinone.js" type="text/javascript"></script><script src="/user/js/user-message_zh-TW.min.js" type="text/javascript"></script></body></html>

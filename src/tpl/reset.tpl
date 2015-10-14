@@ -13,7 +13,7 @@
 		  </div>
 	      <span class="help-block">${pass_pattern_err}</span>
 		</div>
-		<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${reset_pass}</button>
+		<button type="submit" id="submitBtn" class="btn btn-lg btn-primary btn-block" data-loading-text="${loading}">${reset_pass}</button>
 	  </form>
 	  <script language="javascript">
 	  <!--	  
@@ -26,6 +26,9 @@
 		  msg = $.userMsg.changpass_success;
 		  al.removeClass('alert-info');
 		  $('p', al).html(msg);
+		  setTimeout(function(){
+		    $('#submitBtn').prop('disabled', 'disabled');
+		  }, 500);
 		}});
 		$('input[type=checkbox]', fm).click(function() {
 		  var val = $(this).is(':checked');

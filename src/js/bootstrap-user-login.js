@@ -95,14 +95,16 @@
 			} else {
 				if(data.code===1) {
 					ret = true;
-					alertMsg('done', 'alert-success');
-					setTimeout(function(){msgEl.addClass('hidden');}, 1500);
 				} else if(data.code===0) {
 					msgEl.addClass('hidden');
 				} else {
 					alertMsg(data.code, 'alert-danger');
 				}
 			}
+		}
+		if(ret) {			
+		  alertMsg('done', 'alert-success');
+		  setTimeout(function(){msgEl.addClass('hidden');}, 1500);
 		}
 		return ret;
 	};

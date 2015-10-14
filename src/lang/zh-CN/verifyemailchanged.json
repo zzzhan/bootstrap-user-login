@@ -1,0 +1,7 @@
+{
+"title":"Verify email changed&middot; Shapefly",
+"verify_title":"Verify email changed",
+"verifing":"Verifing...",
+"verify_success":"New email changed success.",
+"verify_failure":"New email verified failure!<br>Try to change your email address again."
+}
