@@ -30,7 +30,7 @@ module.exports = function (grunt) {
       build: {
 	    files: [{
 			expand: true,
-			cwd: 'bower_components/jquery-ajax-control/dist/',
+			cwd: 'bower_components/jquery-ajax-inject/dist/',
 			src: '**/*',
 			dest:'dist/js/'
 		  },{
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
       },
       allinone:{
         src: [
-          'dist/js/jquery-ajax-control.min.js',
+          'dist/js/jquery-ajax-inject.min.js',
           'dist/js/dotpl.min.js',
           'dist/js/bootstrap-user-login.min.js'
         ],

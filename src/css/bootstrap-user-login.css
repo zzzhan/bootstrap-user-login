@@ -54,7 +54,7 @@ body {
 	margin: 0px auto; padding: 15px; max-width: 400px;
 }
 .user-message {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

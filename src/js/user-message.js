@@ -9,6 +9,8 @@
 		'1406':'The old and new password can not be the same.',
 		'1407':'The old and new email can not be the same.',
 		'1408':'Paremeter invalid.',		
+		'1409':'Invalid number',
+		'1410':'Invalid date',
 		'1500':'Oh snap! Something went wrong!',
 		'1501':'Hi, please <a href=\"/user/signin#/editor\" class=\"alert-link\">sign in</a>.',
 		'1503':'User name or password invalid.',

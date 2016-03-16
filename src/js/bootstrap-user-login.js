@@ -85,7 +85,7 @@
 		'<div class="alert alert-danger .alert-dismissible user-inner-message">'+
 	            '<button type="button" class="close" aria-label="Close">&times;</button>'+
 				'<p></p></div></div></div>');
-	$.ajaxControl = function(data) {
+	$.ajaxInject = function(data, status, xhr) {
 		var ret = false;
 		if(typeof data === 'string') {
 			ret = true;
@@ -96,7 +96,9 @@
 				if(data.code===1) {
 					ret = true;
 				} else if(data.code===0) {
-					msgEl.addClass('hidden');
+					if(!$('.alert', msgEl).is('.alert-danger')) {
+					  msgEl.addClass('hidden');
+					}
 				} else {
 					alertMsg(data.code, 'alert-danger');
 				}
@@ -105,6 +107,8 @@
 		if(ret) {			
 		  alertMsg('done', 'alert-success');
 		  setTimeout(function(){msgEl.addClass('hidden');}, 1500);
+		} else if(typeof this.error === "function") {
+		  this.error(xhr,data);
 		}
 		return ret;
 	};

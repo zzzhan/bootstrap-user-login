@@ -27,9 +27,9 @@
     "package.json"
   ],
   "dependencies": {
-    "jquery": "^1.10",
     "bootstrap": ">=2",
-    "jquery-ajax-control": "https://github.com/zzzhan/jquery-ajax-control.git",
-    "dotpl": "https://github.com/zzzhan/dotpl-js.git"
+    "dotpl": "~0.1.4",
+    "jquery": "^1.10",
+    "jquery-ajax-inject": "~0.1.0"
   }
 }
