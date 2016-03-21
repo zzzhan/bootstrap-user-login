@@ -6,8 +6,8 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  padding-top: 50px;
+  margin-bottom: 0px;
+  padding-top: 0px;
 }
 .footer {
   position: absolute;
@@ -54,8 +54,9 @@ body {
 	margin: 0px auto; padding: 15px; max-width: 400px;
 }
 .user-message {
-    position: absolute;
-    top: 0;
+	float:left;
+    position: fixed;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 9000;
